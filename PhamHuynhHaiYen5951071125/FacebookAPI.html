@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <p id="demo">
+
+    </p>
+
+    <script type="text/javascript">
+        $.ajax({
+            type: 'GET',
+            url: "https://graph.facebook.com/techmastervn/posts?access_token=EAAAAZAw4FxQIBAEJ7tNX8x0VzqLsZAu72ZBv7Pb4RUjgx62Q1eBbmX8TJwwaHOIALicOi0AW1BZC2EQEdhbaZBapPqb4zItsTOPw4UUDuZBpGs4Qkd2plUBWIZCL0gNYI3279XkLHkqKTZBJ0d5nYWzegVmoZAecZALZCXkT3vQmmzKXJ45LUZCY5mQZAeU3GJ5u9KtEZD",
+            success: function (response) {             
+                for (var i = 0; i < 3; i++) {
+                    $('#demo').append("<b>Bài thứ " + (i + 1) + "</b><br>");
+                    $('#demo').append("Ngày đăng: "+response.data[i].created_time + "<br>");
+                    $('#demo').append("Nội dung: "+response.data[i].message + "<br>");
+                    $('#demo').append("Mô tả: "+response.data[i].description + "<br>");
+
+                }
+
+
+            },
+        });
+    </script>
+
+</body>
+</html>
